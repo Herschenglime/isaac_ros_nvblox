@@ -99,6 +99,11 @@ def get_os1_remappings() -> List[Tuple[str, str]]:
     remappings.append(('pointcloud', '/os1_cloud_node/points'))
     return remappings
 
+def get_unilidar_l2_remappings() -> List[Tuple[str, str]]:
+    remappings = []
+    remappings.append(('pointcloud', '/unilidar/cloud'))
+    return remappings
+
 
 def add_nvblox(args: lu.ArgumentContainer) -> List[Action]:
 
@@ -127,6 +132,8 @@ def add_nvblox(args: lu.ArgumentContainer) -> List[Action]:
                              'config/nvblox/specializations/nvblox_zed.yaml')
     os1_config = lu.get_path('nvblox_examples_bringup',
                              'config/nvblox/specializations/nvblox_os1.yaml')
+    unitree_l2_config = lu.get_path('nvblox_examples_bringup',
+                             'config/nvblox/specializations/nvblox_unitree_l2.yaml')
 
     if mode is NvbloxMode.static:
         mode_config = {}
@@ -163,6 +170,10 @@ def add_nvblox(args: lu.ArgumentContainer) -> List[Action]:
         remappings = get_os1_remappings()
         camera_config = os1_config
         assert use_lidar, 'Must run lidar for os1 example.'
+    elif camera is NvbloxCamera.unitree_l2:
+        remappings = get_unitree_l2_remappings()
+        camera_config = unitree_l2_config
+        assert use_lidar, 'Must run lidar for unitree l2.'
     else:
         raise Exception(f'Camera {camera} not implemented for nvblox.')
 

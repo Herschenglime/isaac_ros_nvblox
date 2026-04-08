@@ -66,6 +66,7 @@ class NvbloxCamera(NvbloxEnum):
     fuser = 5
     multi_realsense = 6
     os1 = 7
+    unitree_l2 = 8
 
 
 class NvbloxPeopleSegmentation(NvbloxEnum):
