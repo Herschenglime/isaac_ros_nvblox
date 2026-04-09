@@ -325,7 +325,7 @@ Visualization Manager:
             Durability Policy: Volatile
             History Policy: Keep Last
             Reliability Policy: Reliable
-            Value: /nvblox_node/back_projected_depth/os1_lidar
+            Value: /nvblox_node/back_projected_depth/aft_mapped
           Use Fixed Frame: true
           Use rainbow: true
           Value: false
@@ -336,7 +336,7 @@ Visualization Manager:
       Length: 0.6000000238418579
       Name: Camera Link
       Radius: 0.10000000149011612
-      Reference Frame: os1_lidar
+      Reference Frame: aft_mapped
       Value: true
   Enabled: true
   Global Options:
