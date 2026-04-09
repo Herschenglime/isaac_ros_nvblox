@@ -99,7 +99,7 @@ def get_os1_remappings() -> List[Tuple[str, str]]:
     remappings.append(('pointcloud', '/os1_cloud_node/points'))
     return remappings
 
-def get_unilidar_l2_remappings() -> List[Tuple[str, str]]:
+def get_unitree_l2_remappings() -> List[Tuple[str, str]]:
     remappings = []
     remappings.append(('pointcloud', '/unilidar/cloud'))
     return remappings
