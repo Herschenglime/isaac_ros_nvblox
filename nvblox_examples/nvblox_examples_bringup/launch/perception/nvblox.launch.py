@@ -101,7 +101,8 @@ def get_os1_remappings() -> List[Tuple[str, str]]:
 
 def get_unitree_l2_remappings() -> List[Tuple[str, str]]:
     remappings = []
-    remappings.append(('pointcloud', '/unilidar/cloud'))
+    # assuming use of point lio produced cloud
+    remappings.append(('pointcloud', '/cloud_registered_body'))
     return remappings
 
 
