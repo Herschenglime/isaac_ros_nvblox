@@ -6,8 +6,8 @@
 
     # explicitly disable depth camera
     use_depth: false
-    # also color (for now)
-    use_color: false
+    # enable color fusion from camera stream
+    use_color: true
 
 
     # testing: try manually replacing things in base_link to the new aft_mapped
