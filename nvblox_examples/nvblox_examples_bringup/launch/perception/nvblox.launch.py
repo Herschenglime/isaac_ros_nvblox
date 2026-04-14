@@ -102,7 +102,10 @@ def get_os1_remappings() -> List[Tuple[str, str]]:
 def get_unitree_l2_remappings() -> List[Tuple[str, str]]:
     remappings = []
     # assuming use of point lio produced cloud
-    remappings.append(('pointcloud', '/cloud_registered_body'))
+    remappings.append(('pointcloud', '/cloud_registered_body'))    
+    # Color stream to texture lidar-integrated geometry.
+    remappings.append(('camera_0/color/image', '/trig/image_raw'))
+    remappings.append(('camera_0/color/camera_info', '/trig/camera_info'))
     return remappings
 
 
