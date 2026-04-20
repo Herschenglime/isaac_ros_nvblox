@@ -87,6 +87,7 @@ def generate_launch_description() -> LaunchDescription:
             launch_arguments={
                 'mode': args.mode,
                 'camera': 'unitree_l2',
+                'colored': True
             },
         ))
 

@@ -30,6 +30,8 @@ def add_rviz(args: lu.ArgumentContainer) -> list[Action]:
     else:
         mode = NvbloxMode[args.mode]
         camera = NvbloxCamera[args.camera]
+        colored = args.colored
+
         if camera in [NvbloxCamera.zed2, NvbloxCamera.zedx]:
             camera_str = 'zed'
         else:
@@ -40,14 +42,16 @@ def add_rviz(args: lu.ArgumentContainer) -> list[Action]:
         if camera is NvbloxCamera.multi_realsense and mode is NvbloxMode.static:
             camera_str = 'realsense'
 
+        color_str = "_colored" if colored else ""
+
         if mode is NvbloxMode.people_detection:
             rviz_config_name = camera_str + "_people_detection_example.rviz"
         elif mode is NvbloxMode.people_segmentation:
             rviz_config_name = camera_str + "_people_segmentation_example.rviz"
         elif mode is NvbloxMode.dynamic:
-            rviz_config_name = camera_str + "_dynamics_example.rviz"
+            rviz_config_name = camera_str + color_str + "_dynamics_example.rviz"
         else:
-            rviz_config_name = camera_str + "_example.rviz"
+            rviz_config_name = camera_str + color_str + "_example.rviz"
 
         rviz_config_path = lu.get_path('nvblox_examples_bringup',
                                        'config/visualization/' + rviz_config_name)
@@ -72,6 +76,7 @@ def generate_launch_description() -> LaunchDescription:
         cli=True)
     args.add_arg('mode', NvbloxMode.static)
     args.add_arg('camera', NvbloxCamera.realsense)
+    args.add_arg('colored', False)
 
     args.add_opaque_function(add_rviz)
     return LaunchDescription(args.get_launch_actions())
