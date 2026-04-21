@@ -10,7 +10,7 @@
     use_color: true
 
     # fixes for map persistence
-    integrate_color_rate_hz: 10.0
+    integrate_color_rate_hz: 5.0
 
     # turn off point decay, doesn't work for lidar:
     decay_tsdf_rate_hz: 0.0 
