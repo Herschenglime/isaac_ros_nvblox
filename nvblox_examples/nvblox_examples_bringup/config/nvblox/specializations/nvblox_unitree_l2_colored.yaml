@@ -9,6 +9,12 @@
     # enable color fusion from camera stream
     use_color: true
 
+    # fixes for map persistence
+    integrate_color_rate_hz: 10.0
+
+    # turn off point decay, doesn't work for lidar:
+    decay_tsdf_rate_hz: 0.0 
+    decay_dynamic_occupancy_rate_hz: 0.0
 
     # testing: try manually replacing things in base_link to the new aft_mapped
     workspace_height_bounds_visualization_attachment_frame_id: "aft_mapped"
@@ -29,7 +35,7 @@
     # QoS settings
     input_qos: "SENSOR_DATA"
     # Map clearing settings
-    map_clearing_radius_m: 20.0 # no map clearing if < 0.0
+    map_clearing_radius_m: -1.0 # no map clearing if < 0.0
     map_clearing_frame_id: "aft_mapped"
     # Rviz visualization
     esdf_slice_bounds_visualization_attachment_frame_id: "aft_mapped"
@@ -45,6 +51,7 @@
       # the unitree l2 supports up to 30m for reflective surfaces, but we'll keep 15 for now to be safe
       lidar_projective_integrator_max_integration_distance_m: 15.0
       projective_integrator_weighting_mode: "constant"
+      projective_integrator_max_integration_distance_m: 15.0
       raycast_subsampling_factor: 2
       # esdf integrator
       esdf_slice_height: -0.9
